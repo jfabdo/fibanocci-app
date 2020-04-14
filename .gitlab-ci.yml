@@ -1,0 +1,71 @@
+image: python:alpine3.7
+
+variables:
+  DOCKER_REPO: <gcr>
+
+stages:
+  - unit-test
+  - lint
+  - build-push
+  - update-service
+
+unit-tests:
+  stage: unit-test
+  tags:
+    - sample-app
+  script:
+    - pip3 install coverage nose nose-exclude rednose
+    - pip3 install -r requirements.txt
+    - nosetests . -v
+  only:
+    refs:
+      - /.*/
+  except:
+    changes:
+      - README.md
+      - .gitignore
+
+codestyle-check:
+  stage: lint
+  tags:
+    - sample-app
+  script:
+    - pip3 install pylint
+    - pip3 install -r requirements.txt
+    - pylint src -v
+  only:
+    refs:
+      - /.*/
+  except:
+    changes:
+      - README.md
+      - .gitignore
+
+build-push-image:
+  stage: build-push
+  tags:
+    - sample-app
+  script:
+    - echo 'Build and push docker images'
+    - docker build -t $DOCKER_REPO/sample-app:latest .
+    - docker push $DOCKER_REPO/sample-app:latest
+  only:
+    refs:
+      - master
+  except:
+    changes:
+      - README.md
+      - .gitignore
+
+update-gke-service:
+  stage: update-service
+  script:
+    - echo 'Update GKE Service'
+    # commands to update GKE service through Anthos.
+  only:
+    refs:
+      - master
+  except:
+    changes:
+      - README.md
+      - .gitignore
