@@ -18,7 +18,7 @@ HTTP_BAD_REQUEST = 400
 # Init flask app
 app = Flask(__name__)
 CORS(app, origins=json.loads(ALLOWED_ORIGINS))
-logging.info(f'CORS allowed origins set to {ALLOWED_ORIGINS}')
+logging.info('CORS allowed origins set to ["*"]')
 
 @app.route('/')
 def welcome():
@@ -53,5 +53,5 @@ def get_fibonacci(places=0):
 
 # This is not called when using gunicorn as wsgi
 if __name__ == '__main__':
-    logging.info(f'>>>>> Starting flask server at http://{FLASK_HOST}:{FLASK_PORT}')
+    logging.info('>>>>> Starting flask server at localhost:8080')
     app.run(host=FLASK_HOST, port=FLASK_PORT)
