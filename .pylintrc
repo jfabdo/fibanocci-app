@@ -1,0 +1,4 @@
+[LOGGING]
+logging-format-style=fstr
+[MASTER]
+disable=C0103,C0114,C0115,C0116
