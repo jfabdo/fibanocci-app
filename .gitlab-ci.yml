@@ -1,9 +1,5 @@
 image: python:alpine3.7
 
-variables:
-  DOCKER_REPO: <gcr>
-  RANDOM_VAR: ok
-
 stages:
   - unit-test
   - lint
@@ -15,7 +11,6 @@ unit-tests:
   tags:
     - sample-app
   script:
-    - whoami
     - pip3 install coverage nose nose-exclude rednose
     - pip3 install -r requirements.txt
     - nosetests . -v
