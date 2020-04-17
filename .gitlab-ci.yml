@@ -58,7 +58,8 @@ update-gke-service:
   stage: update-service
   script:
     - echo 'Update GKE Service'
-    # commands to update GKE service through Anthos.
+    - gcloud container clusters get-credentials anthos-cluster-417
+    - kubectl apply -f deployment.yaml
   only:
     refs:
       - master
