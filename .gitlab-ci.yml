@@ -71,6 +71,7 @@ update-gke-service:
     - gcloud config set compute/zone ${CLUSTER_LOCATION}
     - gcloud container clusters get-credentials anthos-cluster-417
     - kubectl apply -f deployment.yaml
+    - kubectl apply -f service.yaml
   only:
     refs:
       - master
