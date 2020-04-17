@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "sample-app"
+  namespace: "sample-app"
+  labels:
+    app: "sample-app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "sample-app"
+  template:
+    metadata:
+      labels:
+        app: "sample-app"
+    spec:
+      containers:
+      - name: "sample-app-sha256-1"
+        image: "us.gcr.io/learning-245417/sample-app@sha256:abad68bdf3f5a60b422117c8936ba32f8e1664c0041134ae8a11698b4bb67f24"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "sample-app-hpa-dgrg"
+  namespace: "sample-app"
+  labels:
+    app: "sample-app"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "sample-app"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
