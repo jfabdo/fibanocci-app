@@ -58,6 +58,17 @@ update-gke-service:
   stage: update-service
   script:
     - echo 'Update GKE Service'
+    - export PROJECT_ID=learning-245417
+    - export PROJECT_NUMBER=$(gcloud projects describe ${PROJECT_ID} --format="value(projectNumber)")
+    - export CLUSTER_NAME=anthos-cluster-417
+    - export CLUSTER_REGION=us-central1
+    - export CLUSTER_LOCATION=${CLUSTER_REGION}-a
+    - export WORKLOAD_POOL=${PROJECT_ID}.svc.id.goog
+    - export MESH_ID="proj-${PROJECT_NUMBER}"
+    - export CHANNEL=regular
+    - export SERVICE_ACCOUNT_NAME=${CLUSTER_NAME}-sa
+    - gcloud config set project ${PROJECT_ID}
+    - gcloud config set compute/zone ${CLUSTER_LOCATION}
     - gcloud container clusters get-credentials anthos-cluster-417
     - kubectl apply -f deployment.yaml
   only:
