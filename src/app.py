@@ -23,7 +23,7 @@ logging.info('CORS allowed origins set to ["*"]')
 @app.route('/')
 def welcome():
     """ Welcome Page. """
-    return "Hello World Jr."
+    return "Hello World. Never do Live Demos"
 
 @app.route('/health')
 def health_check():

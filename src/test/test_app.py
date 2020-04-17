@@ -45,4 +45,4 @@ class TestUtilityApis(unittest.TestCase):
     def test_home_page(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'Hello World Jr.')
+        self.assertEqual(response.data, b'Hello World. Never do Live Demos')
