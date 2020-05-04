@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "fibanocci-app"
-        image: "us.gcr.io/learning-245417/fibanocci-app@sha256:abad68bdf3f5a60b422117c8936ba32f8e1664c0041134ae8a11698b4bb67f24"
+        image: "us.gcr.io/learning-245417/sample-app@sha256:abad68bdf3f5a60b422117c8936ba32f8e1664c0041134ae8a11698b4bb67f24"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
