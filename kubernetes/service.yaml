@@ -2,7 +2,7 @@
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "sample-app-service"
+  name: "fibanocci-app-service"
   namespace: "fibanocci-app"
   labels:
     app: "fibanocci-app"
