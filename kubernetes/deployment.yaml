@@ -2,19 +2,19 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "sample-app"
-  namespace: "sample-app"
+  name: "fibanocci-app"
+  namespace: "fibanocci-app"
   labels:
-    app: "sample-app"
+    app: "fibanocci-app"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "sample-app"
+      app: "fibanocci-app"
   template:
     metadata:
       labels:
-        app: "sample-app"
+        app: "fibanocci-app"
     spec:
       containers:
       - name: "sample-app"
@@ -24,13 +24,13 @@ apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: "sample-app-hpa-dgrg"
-  namespace: "sample-app"
+  namespace: "fibanocci-app"
   labels:
-    app: "sample-app"
+    app: "fibanocci-app"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "sample-app"
+    name: "fibanocci-app"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
