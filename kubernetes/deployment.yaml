@@ -3,14 +3,14 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: "sample-app"
-  namespace: "fibanocci-app"
+  namespace: "gdfsgdf"
   labels:
-    app: "fibanocci-app"
+    app: "gdfg"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "fibanocci-app"
+      app: "gdfs"
   template:
     metadata:
       labels:
