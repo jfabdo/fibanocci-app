@@ -15,6 +15,3 @@ spec:
     app: "fibanocci-app"
   type: "LoadBalancer"
   loadBalancerIP: ""
-  syncPolicy:
-    prune: true
-    selfHeal: true
