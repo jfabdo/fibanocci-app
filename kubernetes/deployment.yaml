@@ -11,14 +11,14 @@ spec:
   selector:
     matchLabels:
       app: "fibanocci-app"
-  syncPolicy:
-    prune: true
-    selfHeal: true
   template:
     metadata:
       labels:
         app: "fibanocci-app"
-    spec:
+    spec:  
+      syncPolicy:
+        prune: true
+        selfHeal: true
       containers:
       - name: "fibanocci-app"
         image: "192.168.0.22:8000"
