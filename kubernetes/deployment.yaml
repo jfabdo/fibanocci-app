@@ -11,6 +11,9 @@ spec:
   selector:
     matchLabels:
       app: "fibanocci-app"
+  syncPolicy:
+    prune: true
+    selfHeal: true
   template:
     metadata:
       labels:
