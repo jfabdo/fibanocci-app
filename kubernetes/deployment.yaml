@@ -18,7 +18,7 @@ spec:
     spec:  
       containers:
       - name: "fibanocci-app"
-        image: "jfabdo/fibanocci-app:latest"
+        image: "jfabdo/fibonacci-app:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
