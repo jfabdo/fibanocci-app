@@ -18,7 +18,7 @@ spec:
     spec:  
       containers:
       - name: "fibanocci-app"
-        image: "http://192.168.0.22:8000/fibanocci-app:latest"
+        image: "jfabdo/fibanocci-app:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
