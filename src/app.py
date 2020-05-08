@@ -53,5 +53,5 @@ def get_fibonacci(places=0):
 
 # This is not called when using gunicorn as wsgi
 if __name__ == '__main__':
-    logging.info('>>>>>> Starting flask server at localhost:8080')
+    logging.info('>>>>>>> Starting flask server at localhost:8080')
     app.run(host=FLASK_HOST, port=FLASK_PORT)
