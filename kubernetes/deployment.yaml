@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "fibanocci-app"
-  namespace: "fibanocci-app"
+  name: "fibonacci-app"
+  namespace: "fibonacci-app"
   labels:
-    app: "fibanocci-app"
+    app: "fibonacci-app"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "fibanocci-app"
+      app: "fibonacci-app"
   template:
     metadata:
       labels:
-        app: "fibanocci-app"
+        app: "fibonacci-app"
     spec:  
       containers:
-      - name: "fibanocci-app"
+      - name: "fibonacci-app"
         image: "jfabdo/fibonacci-app:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "fibanocci-app-hpa-dgrg"
-  namespace: "fibanocci-app"
+  name: "fibonacci-app-hpa-dgrg"
+  namespace: "fibonacci-app"
   labels:
-    app: "fibanocci-app"
+    app: "fibonacci-app"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "fibanocci-app"
+    name: "fibonacci-app"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
