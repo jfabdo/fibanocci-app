@@ -28,14 +28,14 @@ spec:
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "{{ .Chart.metadata.name }}-hpa-dgrg"
+  name: "{{ $.Chart.metadata.name }}-hpa-dgrg"
   namespace: "default"
   labels:
-    app: "{{ .Chart.metadata.name }}"
+    app: "{{ $.Chart.metadata.name }}"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "{{ .Chart.metadata.name }}"
+    name: "{{ $.Chart.metadata.name }}"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -48,15 +48,15 @@ spec:
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "{{ .Chart.metadata.name }}-service"
+  name: "{{ $.Chart.metadata.name }}-service"
   namespace: "default"
   labels:
-    app: "{{ .Chart.metadata.name }}"
+    app: "{{ $.Chart.metadata.name }}"
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: "{{ .Chart.metadata.name }}"
+    app: "{{ $.Chart.metadata.name }}"
   type: "NodePort"
