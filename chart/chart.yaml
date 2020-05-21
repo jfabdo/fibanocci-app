@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: {{ .Values.app-name }}
-  namespace: {{ .Values.app-name }}
+  namespace: default
   labels:
     app: {{ .Values.app-name }}
 spec:
@@ -29,7 +29,7 @@ apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: {{ .Values.app-name }}-hpa-dgrg
-  namespace: {{ .Values.app-name }}
+  namespace: default
   labels:
     app: {{ .Values.app-name }}
 spec:
