@@ -2,40 +2,40 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "{{ .name }}"
+  name: "{{ $.Chart.Name }}"
   namespace: "default"
   labels:
-    app: "{{ .name }}"
+    app: "{{ $.Chart.Name }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ .name }}"
+      app: "{{ $.Chart.Name }}"
   template:
     metadata:
       labels:
-        app: "{{ .name }}"
+        app: "{{ $.Chart.Name }}"
     spec:
       containers:
       - name: "sample-app"
-        image: "jfabdo/{{ .name }}:latest"
+        image: "jfabdo/{{ $.Chart.Name }}:latest"
         env:
         - name: APP_VERSION
-          value: "{{ .Chart.Version }}"
+          value: "{{ $.Chart.Name }}"
         - name: USER
-          value: "{{ .Values.user }}"
+          value: "{{ $.Chart.Name }}"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "{{ $.Chart.metadata.name }}-hpa-dgrg"
+  name: "{{ $.Chart.Name }}-hpa-dgrg"
   namespace: "default"
   labels:
-    app: "{{ $.Chart.metadata.name }}"
+    app: "{{ $.Chart.Name }}"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "{{ $.Chart.metadata.name }}"
+    name: "{{ $.Chart.Name }}"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -48,15 +48,15 @@ spec:
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "{{ $.Chart.metadata.name }}-service"
+  name: "{{ $.Chart.Name }}-service"
   namespace: "default"
   labels:
-    app: "{{ $.Chart.metadata.name }}"
+    app: "{{ $.Chart.Name }}"
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: "{{ $.Chart.metadata.name }}"
+    app: "{{ $.Chart.Name }}"
   type: "NodePort"
