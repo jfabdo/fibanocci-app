@@ -2,40 +2,40 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: {{ .Values.app-name }}
+  name: {{ .values.app-name }}
   namespace: "default"
   labels:
-    app: {{ .Values.app-name }}
+    app: {{ .values.app-name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.app-name }}
+      app: {{ .values.app-name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.app-name }}
+        app: {{ .values.app-name }}
     spec:
       containers:
-      - name: {{ .Values.app-name }}
+      - name: {{ .values.app-name }}
         image: jfabdo/fibonacci-app:latest
         env:
         - name: APP_VERSION
-          value: {{ .Values.app-name }}
+          value: {{ .values.app-name }}
         - name: USER
-          value: {{ .Values.app-name }}
+          value: {{ .values.app-name }}
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: {{ .Values.app-name }}-hpa-dgrg
+  name: {{ .values.app-name }}-hpa-dgrg
   namespace: "default"
   labels:
-    app: {{ .Values.app-name }}
+    app: {{ .values.app-name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: {{ .Values.app-name }}
+    name: {{ .values.app-name }}
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -48,15 +48,15 @@ spec:
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: {{ .Values.app-name }}-service
+  name: {{ .values.app-name }}-service
   namespace: "default"
   labels:
-    app: {{ .Values.app-name }}
+    app: {{ .values.app-name }}
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: {{ .Values.app-name }}
+    app: {{ .values.app-name }}
   type: "NodePort"
