@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: {{ .Values.app-name }}
-  namespace: default
+  namespace: "default"
   labels:
     app: {{ .Values.app-name }}
 spec:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.app-name }}
-        image: jfabdo/{{ .Values.app-name }}:latest
+        image: "jfabdo/fibonacci-app:latest"
         env:
         - name: APP_VERSION
           value: {{ .Values.app-name }}
@@ -29,13 +29,13 @@ apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: {{ .Values.app-name }}-hpa-dgrg
-  namespace: default
+  namespace: "default"
   labels:
     app: {{ .Values.app-name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "{{ .Values.app-name }}"
+    name: {{ .Values.app-name }}
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -48,15 +48,15 @@ spec:
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "{{ .Values.app-name }}-service"
+  name: {{ .Values.app-name }}-service
   namespace: "default"
   labels:
-    app: "{{ .Values.app-name }}"
+    app: {{ .Values.app-name }}
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: "{{ .Values.app-name }}"
+    app: {{ .Values.app-name }}
   type: "NodePort"
