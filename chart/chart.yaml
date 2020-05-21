@@ -5,20 +5,20 @@ metadata:
   name: "{{ .name }}"
   namespace: "default"
   labels:
-    app: "{{ .Chart.metadata.name }}"
+    app: "{{ .name }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ .Chart.metadata.name }}"
+      app: "{{ .name }}"
   template:
     metadata:
       labels:
-        app: "{{ .Chart.metadata.name }}"
+        app: "{{ .name }}"
     spec:
       containers:
       - name: "sample-app"
-        image: "jfabdo/{{ .Chart.metadata.name }}:latest"
+        image: "jfabdo/{{ .name }}:latest"
         env:
         - name: APP_VERSION
           value: "{{ .Chart.Version }}"
