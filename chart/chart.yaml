@@ -2,36 +2,36 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "{{ .Values.app-name }}"
-  namespace: "default"
+  name: {{ .Values.app-name }}
+  namespace: {{ .Values.app-name }}
   labels:
-    app: "{{ .Values.app-name }}"
+    app: {{ .Values.app-name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ .Values.app-name }}"
+      app: {{ .Values.app-name }}
   template:
     metadata:
       labels:
-        app: "{{ .Values.app-name }}"
+        app: {{ .Values.app-name }}
     spec:
       containers:
-      - name: "{{ .Values.app-name }}"
-        image: "jfabdo/{{ .Values.app-name }}:latest"
+      - name: {{ .Values.app-name }}
+        image: jfabdo/{{ .Values.app-name }}:latest
         env:
         - name: APP_VERSION
-          value: "{{ .Values.app-name }}"
+          value: {{ .Values.app-name }}
         - name: USER
-          value: "{{ .Values.app-name }}"
+          value: {{ .Values.app-name }}
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "{{ .Values.app-name }}-hpa-dgrg"
-  namespace: "default"
+  name: {{ .Values.app-name }}-hpa-dgrg
+  namespace: {{ .Values.app-name }}
   labels:
-    app: "{{ .Values.app-name }}"
+    app: {{ .Values.app-name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
