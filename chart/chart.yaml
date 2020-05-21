@@ -2,7 +2,7 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "fibonacci-app"
+  name: "{{ .name }}"
   namespace: "default"
   labels:
     app: "{{ .Chart.metadata.name }}"
