@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Chart.metadata.name }}"
-        image: "jfabdo/{{ .Chart.metadata.name }}:latest"
+        image: "jfabdo/fibonacci-app:latest"
         env:
         - name: APP_VERSION
           value: "{{ .Chart.metadata.name }}"
