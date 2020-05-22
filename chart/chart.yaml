@@ -1,4 +1,4 @@
-name: fibonacci-app
+name: "fibonacci-app"
 ---
 apiVersion: "apps/v1"
 kind: "Deployment"
