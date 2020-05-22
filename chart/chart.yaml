@@ -2,7 +2,7 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: $ARGOCD_APP_NAME
+  name: "fibonacci-app"
   namespace: "default"
   labels:
     app: "fibonacci-app"
