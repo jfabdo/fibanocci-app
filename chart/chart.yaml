@@ -1,3 +1,5 @@
+apiVersion: "apps/v1"
+kind: "Values"
 name: "fibonacci-app"
 ---
 apiVersion: "apps/v1"
