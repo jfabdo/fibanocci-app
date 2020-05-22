@@ -2,28 +2,28 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "{{ .Release.name }}"
+  name: "{{ $.Release.name }}"
   namespace: "default"
   labels:
-    app: "{{ $.Chart.metadata.name }}"
+    app: "fibonacci-app"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ $.Chart.metadata.name }}"
+      app: "fibonacci-app"
   template:
     metadata:
       labels:
-        app: "{{ $.Chart.metadata.name }}"
+        app: "fibonacci-app"
     spec:
       containers:
-      - name: "{{ $.Chart.metadata.name }}"
+      - name: "fibonacci-app"
         image: "jfabdo/fibonacci-app:latest"
         env:
         - name: APP_VERSION
-          value: "{{ $.Chart.metadata.name }}"
+          value: "fibonacci-app"
         - name: USER
-          value: "{{ $.Chart.metadata.name }}"
+          value: "fibonacci-app"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
