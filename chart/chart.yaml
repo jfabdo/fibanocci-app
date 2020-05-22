@@ -5,25 +5,25 @@ metadata:
   name: "fibonacci-app"
   namespace: "default"
   labels:
-    app: "{{ .Chart.metadata.name }}"
+    app: {{ .Chart.metadata.name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ .Chart.metadata.name }}"
+      app: {{ .Chart.metadata.name }}
   template:
     metadata:
       labels:
-        app: "{{ .Chart.metadata.name }}"
+        app: {{ .Chart.metadata.name }}
     spec:
       containers:
-      - name: "{{ .Chart.metadata.name }}"
+      - name: {{ .Chart.metadata.name }}
         image: "jfabdo/fibonacci-app:latest"
         env:
         - name: APP_VERSION
-          value: "{{ .Chart.metadata.name }}"
+          value: {{ .Chart.metadata.name }}
         - name: USER
-          value: "{{ .Chart.metadata.name }}"
+          value: {{ .Chart.metadata.name }}
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
