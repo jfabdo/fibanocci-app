@@ -1,8 +1,9 @@
+name: fibonacci-app
 ---
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "fibonacci-app"
+  name: {{ $Chart.name }}
   namespace: "default"
   labels:
     app: "fibonacci-app"
