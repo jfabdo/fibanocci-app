@@ -1,6 +1,3 @@
-source:
-    helm:
-      releaseName: "fibonacci-app"
 ---
 apiVersion: "apps/v1"
 kind: "Deployment"
@@ -27,14 +24,14 @@ spec:
           value: "fibonacci-app"
         - name: USER
           value: "fibonacci-app"
-    spec:
-      ports:
-      - protocol: "TCP"
-        port: 9001
-        targetPort: 8080
-      selector:
-        app: "fibonacci-app"
-      type: "NodePort"
+  spec:
+    ports:
+    - protocol: "TCP"
+      port: 9001
+      targetPort: 8080
+    selector:
+      app: "fibonacci-app"
+    type: "NodePort"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
