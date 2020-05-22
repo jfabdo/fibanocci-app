@@ -1,5 +1,5 @@
 apiVersion: v2
-name: sample-app
-description: Sample Application
+name: fibonacci-app
+description: Generates fibonacci numbers
 type: application
 version: 0.1.5
