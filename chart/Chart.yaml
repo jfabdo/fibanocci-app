@@ -1,5 +1,7 @@
 apiVersion: v2
-name: fibonacci-app
-description: Generates fibonacci numbers
-type: application
-version: 0.1.5
+kind: Application
+metadata:
+  name: {{ .Release.Name
+  description: Generates fibonacci numbers
+  type: application
+  version: 0.1.5
