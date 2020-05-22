@@ -2,7 +2,7 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "{{ Chart.default.data.name }}"
+  name: "{{ .name $ }}"
   namespace: "default"
   labels:
     app: "fibonacci-app"
@@ -61,8 +61,3 @@ spec:
     app: "fibonacci-app"
   type: "NodePort"
 ---
-apiVersion: "apps/v1"
-kind: ConfigMap
-default:
-  data:
-    name: "fibonacci-app"
