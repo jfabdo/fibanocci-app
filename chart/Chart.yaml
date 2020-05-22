@@ -1,7 +1,7 @@
 apiVersion: v2
 kind: Application
 metadata:
-  name: {{ .Release.Name
+  name: {{ .Release.Name }}
   description: Generates fibonacci numbers
   type: application
   version: 0.1.5
