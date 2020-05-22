@@ -1,3 +1,4 @@
+kind: ConfigMap
 default:
   data:
     name: "fibonacci-app"
