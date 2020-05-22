@@ -27,11 +27,10 @@ spec:
   spec:
     ports:
     - protocol: "TCP"
-      port: 9001
+      port: 8080
       targetPort: 8080
     selector:
       app: "fibonacci-app"
-    type: "NodePort"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
