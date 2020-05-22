@@ -1,3 +1,6 @@
+source:
+    helm:
+      releaseName: "fibonacci-app"
 ---
 apiVersion: "apps/v1"
 kind: "Deployment"
