@@ -1,0 +1,3 @@
+release: 
+  name: "fibonacci-app"
+  namespace: "default"
