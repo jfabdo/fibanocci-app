@@ -2,7 +2,7 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: { $.chart }
+  name: { $.Chart }
   namespace: "default"
   labels:
     app: "fibonacci-app"
