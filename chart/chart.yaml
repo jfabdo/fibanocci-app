@@ -16,7 +16,7 @@ spec:
         app: {{ $.values.app-name }}
     spec:
       containers:
-      - name: { $.values.app-name }
+      - name: {{ $.values.app-name }}
         image: "jfabdo/fibonacci-app:latest"
         env:
         - name: APP_VERSION
@@ -28,13 +28,13 @@ apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: "fibonacci-app-hpa-dgrg"
-  namespace: { $.values.app-name }
+  namespace: {{ $.values.app-name }}
   labels:
-    app: { $.values.app-name }
+    app: {{ $.values.app-name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: { $.values.app-name }
+    name: {{ $.values.app-name }}
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -48,14 +48,14 @@ apiVersion: "v1"
 kind: "Service"
 metadata:
   name: "fibonacci-app-service"
-  namespace: { $.values.app-name }
+  namespace: {{ $.values.app-name }}
   labels:
-    app: { $.values.app-name }
+    app: {{ $.values.app-name }}
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: { $.values.app-name }
+    app: {{ $.values.app-name }}
   type: "NodePort"
