@@ -1,7 +1,46 @@
-apiVersion: v2
-kind: Application
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
   name: {{ .Release.Name }}
-  description: Generates fibonacci numbers
-  type: application
-  version: 0.1.5
+  namespace: "default"
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: "jfabdo/fibonacci-app:latest"
+        env:
+        - name: APP_VERSION
+          value: "{{ .Chart.Version }}"
+        - name: USER
+          value: "{{ .Values.user }}"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "sample-app-hpa-dgrg"
+  namespace: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: {{ .Release.Name }}
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
