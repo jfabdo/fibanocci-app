@@ -1,0 +1,28 @@
+apiVersion: "v2"
+name: "fibonacci-app"
+version: "0.0.1"
+type: "application"
+kind: "Deployment"
+metadata:
+  name: "fibonacci-app"
+  namespace: "default"
+  labels:
+    app: "fibonacci-app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "fibonacci-app"
+  template:
+    metadata:
+      labels:
+        app: "fibonacci-app"
+    spec:
+      containers:
+      - name: "fibonacci-app"
+        image: "jfabdo/fibonacci-app:latest"
+        env:
+        - name: APP_VERSION
+          value: "{{ .Chart.Version }}"
+        - name: USER
+          value: "{{ .Values.user }}"
