@@ -27,7 +27,7 @@ spec:
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "sample-app-hpa-dgrg"
+  name: { $.values.app-name }-hpa-dgrg
   namespace: "fibonacci-app"
   labels:
     app: "fibonacci-app"
