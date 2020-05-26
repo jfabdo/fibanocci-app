@@ -1,4 +1,6 @@
-apiVersion: "apps/v1"
+apiVersion: "v2"
+name: "fibonacci-app"
+version: 0.0.1
 kind: "Deployment"
 metadata:
   name: "fibonacci-app"
