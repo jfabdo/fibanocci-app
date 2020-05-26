@@ -4,7 +4,7 @@ metadata:
   name: {{ $.values.app-name }}
   namespace: {{ $.values.app-name }}
   labels:
-    app: "fibonacci-app"
+    app: {{ $.values.app-name }}
 spec:
   replicas: 1
   selector:
