@@ -1,29 +1,28 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "fibonacci-app"
+  name: "sample-app"
   namespace: "default"
   labels:
-    app: "fibonacci-app"
+    app: "sample-app"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "fibonacci-app"
+      app: "sample-app"
   template:
     metadata:
       labels:
-        app: "fibonacci-app"
+        app: "sample-app"
     spec:
       containers:
-      - name: "fibonacci-app"
-        image: "jfabdo/fibonacci-app:latest"
+      - name: "sample-app"
+        image: "pauloiza/sample-app:latest"
         env:
         - name: APP_VERSION
           value: "{{ .Chart.Version }}"
         - name: USER
           value: "{{ .Values.user }}"
-
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
