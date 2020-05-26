@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: {{ .Release.Name }}
-  namespace: "default"
+  namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
 spec:
@@ -48,7 +48,7 @@ spec:
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "sample-app-service"
+  name: {{ .Release.Name }}-service
   namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
