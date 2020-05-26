@@ -2,7 +2,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: "fibonacci-app"
-  namespace: "fibonacci-app"
+  namespace: {{ .values.app-name }}
   labels:
     app: "fibonacci-app"
 spec:
