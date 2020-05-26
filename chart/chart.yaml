@@ -24,7 +24,7 @@ spec:
         - name: USER
           value: "{{ .Values.user }}"
 ---
-apiVersion: "autoscaling/v2-beta"
+apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: "sample-app-hpa-dgrg"
