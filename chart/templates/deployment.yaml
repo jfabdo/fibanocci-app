@@ -2,22 +2,22 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: {{ .values.app-name }}
+  name: {{ .Values.app-name }}
   namespace: "default"
   labels:
-    app: {{ .values.app-name }}
+    app: {{ .Values.app-name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .values.app-name }}
+      app: {{ .Values.app-name }}
   template:
     metadata:
       labels:
-        app: {{ .values.app-name }}
+        app: {{ .Values.app-name }}
     spec:
       containers:
-      - name: {{ .values.app-name }}
+      - name: {{ .Values.app-name }}
         image: "/fibonacci-app:latest"
         env:
         - name: APP_VERSION
@@ -31,11 +31,11 @@ metadata:
   name: "fibonacci-app-hpa-dgrg"
   namespace: "default"
   labels:
-    app: {{ .values.app-name }}
+    app: {{ .Values.app-name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: {{ .values.app-name }}
+    name: {{ .Values.app-name }}
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
