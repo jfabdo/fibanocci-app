@@ -1,2 +1,3 @@
-appname: "fibonacci-app"
+app-name: "fibonacci-app"
 namespace: "fibonacci-app"
+repo-name: "jfabdo"
