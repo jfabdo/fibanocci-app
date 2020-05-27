@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   name: "{{ .Values.appname }}"
-  namespace: "default"
+  namespace: "{{ .Values.namespace }}"
   labels:
     app: "{{ .Values.appname }}"
 spec:
@@ -29,7 +29,7 @@ apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
   name: "fibonacci-app-hpa-dgrg"
-  namespace: "default"
+  namespace: "{{ .Values.namespace }}"
   labels:
     app: "{{ .Values.appname }}"
 spec:

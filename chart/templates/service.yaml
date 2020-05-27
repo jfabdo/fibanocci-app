@@ -5,12 +5,12 @@ metadata:
   name: "fibonacci-app-service"
   namespace: "default"
   labels:
-    app: "fibonacci-app"
+    app: "{{ .Values.appname }}"
 spec:
   ports:
   - protocol: "TCP"
     port: 80
     targetPort: 8080
   selector:
-    app: "fibonacci-app"
+    app: "{{ .Values.appname }}"
   type: "NodePort"
