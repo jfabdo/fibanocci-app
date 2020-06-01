@@ -2,7 +2,7 @@
 
 This is a simple app created to get all Fibonacci numbers up to nth place.
 
-## Installatin (ArgoCD) (Preferred
+## Installatin (ArgoCD) (Preferred)
 
 TPD
 
